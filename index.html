@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <section class="w-screen min-h-screen bg-purple-300 p-10 relative">
+        <div id="header" class="mb-3">
+            <h1 class="text-center text-2xl font-bold">Income Expense Calculator</h1>
+        </div>
+        <div id="input" class="flex flex-col gap-y-5 items-center">
+            <label for="type" class="text-white mb-[-10px] text-lg font-semibold">Choose a transaction type</label>
+            <select name="type" id="type" class="w-[220px] h-[30px] bg-purple-800 text-white flex items-center rounded">
+                <option value="">Select the type transaction</option>
+                <option value="Income">Income</option>
+                <option value="Expense">Expense</option>
+            </select>
+            <input id="description" type="text" placeholder="Description (Example: Salary, Grocery, Rent)"
+                class="w-[500px] h-[40px] bg-purple-100 rounded p-1 border-7 border-violet-400">
+            <input id="amount" type="text" placeholder="Amount (Example: 10000, 3500, 220)"
+                class="w-[500px] h-[40px] bg-purple-100 rounded p-1 border-7 border-violet-400">
+
+            <div id="totals" class="flex flex-col items-end  absolute top-50 right-22 font-medium">
+                <div class="text-end">Total Income: <span id="totalIncome"> </span></div>
+                <div class="text-end">Total Expense: <span id="totalExpense"> </span></div>
+                <div class="text-end">Net Balance: <span id="netBalance"> </span></div>
+            </div>
+        </div>
+        <div id="radiosBtn" class="mb-10 text-white ">
+            <div class="w-20 h-8 bg-purple-800 border-violet-400 border-4 mb-2">
+                <h1 class="text-white text-center font-medium ">Filter</h1>
+            </div>
+            <label>
+                <input type="radio" name="filter" value="all" checked>
+                All
+            </label>
+            <label>
+                <input type="radio" name="filter" value="Income">
+                Income
+            </label>
+            <label>
+                <input type="radio" name="filter" value="Expense">
+                Expense
+            </label>
+        </div>
+        <div id="cards" class="flex flex-col gap-y-3 grid grid-cols-3 px-30">
+            
+
+        </div>
+    </section>
+
+
+    <script src="./script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</body>
+
+</html>
