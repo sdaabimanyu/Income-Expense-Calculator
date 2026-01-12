@@ -2,61 +2,100 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Income Expense Calculator</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
 </head>
 
-<body>
-    <section class="w-screen min-h-screen bg-purple-300 p-10 relative">
-        <div id="header" class="mb-3">
-            <h1 class="text-center text-2xl font-bold">Income Expense Calculator</h1>
-        </div>
-        <div id="input" class="flex flex-col gap-y-5 items-center">
-            <label for="type" class="text-white mb-[-10px] text-lg font-semibold">Choose a transaction type</label>
-            <select name="type" id="type" class="w-[220px] h-[30px] bg-purple-800 text-white flex items-center rounded">
-                <option value="">Select the type transaction</option>
-                <option value="Income">Income</option>
-                <option value="Expense">Expense</option>
-            </select>
-            <input id="description" type="text" placeholder="Description (Example: Salary, Grocery, Rent)"
-                class="w-[500px] h-[40px] bg-purple-100 rounded p-1 border-7 border-violet-400">
-            <input id="amount" type="text" placeholder="Amount (Example: 10000, 3500, 220)"
-                class="w-[500px] h-[40px] bg-purple-100 rounded p-1 border-7 border-violet-400">
+<body class="bg-gray-100 font-inter min-h-screen p-4">
 
-            <div id="totals" class="flex flex-col items-end  absolute top-50 right-22 font-medium">
-                <div class="text-end">Total Income: <span id="totalIncome"> </span></div>
-                <div class="text-end">Total Expense: <span id="totalExpense"> </span></div>
-                <div class="text-end">Net Balance: <span id="netBalance"> </span></div>
+    <section class="max-w-6xl mx-auto space-y-6">
+
+        <h1 class="text-3xl font-bold text-center text-gray-800">
+            Income Expense Calculator
+        </h1>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded-xl shadow">
+                <p class="text-gray-500">Total Income</p>
+                <h2 id="totalIncome" class="text-2xl font-bold text-green-600">0</h2>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow">
+                <p class="text-gray-500">Total Expense</p>
+                <h2 id="totalExpense" class="text-2xl font-bold text-red-500">0</h2>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl shadow">
+                <p class="text-gray-500">Net Balance</p>
+                <h2 id="netBalance" class="text-2xl font-bold text-purple-600">0</h2>
             </div>
         </div>
-        <div id="radiosBtn" class="mb-10 text-white ">
-            <div class="w-20 h-8 bg-purple-800 border-violet-400 border-4 mb-2">
-                <h1 class="text-white text-center font-medium ">Filter</h1>
+
+        <div class="bg-white p-6 rounded-xl shadow space-y-4">
+            <h2 class="text-xl font-semibold text-gray-700">Add Transaction</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <select id="type" aria-label="Transaction Type"
+                    class="border rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none">
+                    <option value="">Select Type</option>
+                    <option value="Income">Income</option>
+                    <option value="Expense">Expense</option>
+                </select>
+
+
+                <input id="description" type="text" placeholder="Description"
+                    class="border rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none" />
+
+                <input id="amount" type="number" placeholder="Amount"
+                    class="border rounded-lg p-3 focus:ring-2 focus:ring-purple-500 outline-none" />
             </div>
-            <label>
-                <input type="radio" name="filter" value="all" checked>
-                All
+
+            <div class="flex gap-3">
+                <button id="addBtn"
+                    class="bg-purple-600 text-white px-6 py-2 rounded-lg hover:bg-purple-700 transition active:scale-95">
+                    Add
+                </button>
+
+                <button id="resetBtn" class="bg-gray-200 px-6 py-2 rounded-lg hover:bg-gray-300 transition">
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <div id="radiosBtn" class="flex gap-3">
+            <label class="cursor-pointer">
+                <input type="radio" name="filter" value="all" checked class="hidden peer">
+                <span class="px-4 py-2 rounded-full bg-purple-600 text-white peer-checked:bg-purple-600">
+                    All
+                </span>
             </label>
-            <label>
-                <input type="radio" name="filter" value="Income">
-                Income
+
+            <label class="cursor-pointer">
+                <input type="radio" name="filter" value="Income" class="hidden peer">
+                <span class="px-4 py-2 rounded-full bg-white shadow peer-checked:bg-green-500 peer-checked:text-white">
+                    Income
+                </span>
             </label>
-            <label>
-                <input type="radio" name="filter" value="Expense">
-                Expense
+
+            <label class="cursor-pointer">
+                <input type="radio" name="filter" value="Expense" class="hidden peer">
+                <span class="px-4 py-2 rounded-full bg-white shadow peer-checked:bg-red-500 peer-checked:text-white">
+                    Expense
+                </span>
             </label>
         </div>
-        <div id="cards" class="flex flex-col gap-y-3 grid grid-cols-3 px-30">
-            
+
+        <div id="cards" class="space-y-3">
 
         </div>
+
     </section>
-
 
     <script src="./script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
